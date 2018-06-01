@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,16 @@ namespace Snake2
             Point pStart = new Point(4, 5, '*');
             Snake snake = new Snake(pStart, 4, Directions.RIGHT);
             snake.Draw();
+            Thread.Sleep(300);  // 300мс
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
 
             Console.ReadLine();
         }
