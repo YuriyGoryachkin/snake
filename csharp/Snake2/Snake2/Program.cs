@@ -17,37 +17,14 @@ namespace Snake2
             p2.Draw();
 
             /**/
-            List<int> numList = new List<int>();
-            numList.Add(0);
-            numList.Add(1);
-            numList.Add(2);
-
-            int x = numList[0];
-            int y = numList[1];
-            int z = numList[2];
-
-            foreach(int i in numList)
-            {
-                Console.WriteLine(i);
-            }
-
-            Console.WriteLine("\nУдаление элемента из списка");
-            numList.RemoveAt(0);    /* удаление элемента с порятковым номером 0 */
-            foreach (int i in numList)
-            {
-                Console.WriteLine(i);
-            }
+            HorizontalLine hline = new HorizontalLine(5, 10, 8, '@');
+            hline.Draw();
             /**/
             /**/
-            List<Point> pList = new List<Point>();  /*создание списка точек*/
-            pList.Add(p1);
-            pList.Add(p2);
-            Console.WriteLine("\nСписок точек:");
-            foreach (object i in pList)
-            {
-                Console.WriteLine(i);
-            }
+            VerticalLine vline = new VerticalLine(6, 9, 15, '@');
+            vline.Draw();
             /**/
+
             Console.ReadLine();
         }
     }
