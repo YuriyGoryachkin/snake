@@ -41,5 +41,18 @@ namespace Snake2
             return nextPoint;
         }
 
+        public void HandleKey(ConsoleKey key)
+        {
+            if (key == ConsoleKey.LeftArrow)
+                direction = Directions.LEFT;
+            else if (key == ConsoleKey.RightArrow)
+                direction = Directions.RIGHT;
+            else if (key == ConsoleKey.DownArrow)
+                direction = Directions.DOWN;
+            else if (key == ConsoleKey.UpArrow)
+                direction = Directions.UP;
+            /*else if (key == ConsoleKey.Escape)*/  //сделать выход по нажатию кнопки ESC
+                
+        }
     }
 }

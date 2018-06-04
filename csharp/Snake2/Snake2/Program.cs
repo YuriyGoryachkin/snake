@@ -22,21 +22,31 @@ namespace Snake2
             lLine.Draw();
             rLine.Draw();
 
-            Point pStart = new Point(4, 5, '*');
+            Point pStart = new Point(4, 5, 'O');
             Snake snake = new Snake(pStart, 4, Directions.RIGHT);
             snake.Draw();
-            Thread.Sleep(300);  // 300мс
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
 
-            Console.ReadLine();
+            while(true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    /*
+                    if (key.Key == ConsoleKey.LeftArrow)
+                        snake.direction = Directions.LEFT;
+                    else if (key.Key == ConsoleKey.RightArrow)
+                        snake.direction = Directions.RIGHT;
+                    else if (key.Key == ConsoleKey.DownArrow)
+                        snake.direction = Directions.DOWN;
+                    else if (key.Key == ConsoleKey.UpArrow)
+                        snake.direction = Directions.UP;
+                    */
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(300);  // 300мс
+                snake.Move();
+            }
+            /*Console.ReadLine();*/
         }
     }
 }
