@@ -11,6 +11,27 @@ namespace Snake2
     {
         static void Main(string[] args)
         {
+            VerticalLine vl = new VerticalLine(0, 10, 5, '%');
+            Draw(vl);
+
+            Point p = new Point(4, 5, 'O');
+            Figure fsnake = new Snake (p, 4, Directions.RIGHT);
+            Draw(fsnake);
+            Snake snake = (Snake)fsnake;    //приведение типа
+
+            HorizontalLine hl = new HorizontalLine(0, 5, 6, '&');
+
+            List<Figure> figures = new List<Figure>();
+            figures.Add(fsnake);
+            figures.Add(vl);
+            figures.Add(hl);
+
+            foreach(var f in figures)
+            {
+                f.Draw();
+            }
+
+            /*
             Console.SetBufferSize(80, 25);
             //рисуем границы
             HorizontalLine uLine = new HorizontalLine(0, 79, 1, '@');
@@ -50,8 +71,12 @@ namespace Snake2
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
                 }
-                /*Console.ReadLine();*/
-            }
+                */
+            /*Console.ReadLine();*/
+        }
+        static void Draw(Figure figure)
+        {
+            figure.Draw();
         }
     }
 }

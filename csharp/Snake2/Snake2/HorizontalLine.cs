@@ -20,14 +20,20 @@ namespace Snake2
                 pList.Add(p);
             }
         }
-        /*
-        public void Draw()
+        
+        public override void Draw() //override переопределение метода
         {
-            foreach(Point p in pList)
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            /*foreach(Point p in pList)
             {
                 p.Draw();
-            }
+            }*/
+
+            base.Draw();
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
-        */
+        
     }
 }

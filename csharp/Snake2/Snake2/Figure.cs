@@ -10,7 +10,7 @@ namespace Snake2
     {
         protected List<Point> pList;
 
-        public void Draw()
+        public virtual void Draw()  //virtual позволяет переопределять метод Draw
         {
             foreach (Point p in pList)
             {
