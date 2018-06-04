@@ -10,38 +10,12 @@ namespace Snake2
     class Program
     {
         static void Main(string[] args)
-        {
-            VerticalLine vl = new VerticalLine(0, 10, 5, '%');
-            Draw(vl);
-
-            Point p = new Point(4, 5, 'O');
-            Figure fsnake = new Snake (p, 4, Directions.RIGHT);
-            Draw(fsnake);
-            Snake snake = (Snake)fsnake;    //приведение типа
-
-            HorizontalLine hl = new HorizontalLine(0, 5, 6, '&');
-
-            List<Figure> figures = new List<Figure>();
-            figures.Add(fsnake);
-            figures.Add(vl);
-            figures.Add(hl);
-
-            foreach(var f in figures)
-            {
-                f.Draw();
-            }
-
-            /*
+        { 
+            
             Console.SetBufferSize(80, 25);
             //рисуем границы
-            HorizontalLine uLine = new HorizontalLine(0, 79, 1, '@');
-            HorizontalLine dLine = new HorizontalLine(0, 79, 24, '@');
-            VerticalLine lLine = new VerticalLine(0, 1, 23, '@');
-            VerticalLine rLine = new VerticalLine(79, 1, 23, '@');
-            uLine.Draw();
-            dLine.Draw();
-            lLine.Draw();
-            rLine.Draw();
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
             Point pStart = new Point(4, 5, 'O');
             Snake snake = new Snake(pStart, 4, Directions.RIGHT);
@@ -54,6 +28,10 @@ namespace Snake2
 
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
@@ -71,12 +49,27 @@ namespace Snake2
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
                 }
-                */
-            /*Console.ReadLine();*/
+            }
+            WriteGameOver();
+            Console.ReadLine();
         }
-        static void Draw(Figure figure)
+
+
+        static void WriteGameOver()
         {
-            figure.Draw();
+            int xOffset = 25;
+            int yOffset = 8;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(xOffset, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
+            WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
+        }
+
+        static void WriteText(String text, int xOffset, int yOffset)
+        {
+            Console.SetCursorPosition(xOffset, yOffset);
+            Console.WriteLine(text);
         }
     }
 }

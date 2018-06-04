@@ -19,21 +19,6 @@ namespace Snake2
                 Point p = new Point(x, y, sym);
                 pList.Add(p);
             }
-        }
-        
-        public override void Draw() //override переопределение метода
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-
-            /*foreach(Point p in pList)
-            {
-                p.Draw();
-            }*/
-
-            base.Draw();
-
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        
+        }        
     }
 }
