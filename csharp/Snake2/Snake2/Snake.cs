@@ -52,7 +52,19 @@ namespace Snake2
             else if (key == ConsoleKey.UpArrow)
                 direction = Directions.UP;
             /*else if (key == ConsoleKey.Escape)*/  //сделать выход по нажатию кнопки ESC
-                
+        }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }
